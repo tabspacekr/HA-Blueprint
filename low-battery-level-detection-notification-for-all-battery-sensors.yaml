@@ -133,8 +133,7 @@ trigger:
   at: !input 'time'
 condition:
 - condition: template
-  value_template: '{{ sensors != '''' and (day | int == 0 or day | int == now().isoweekday())
-    }}'
+  value_template: '{{ sensors != '''' and (day | int == 0 or day | int == now().isoweekday()) }}'
 action:
 - choose: []
   default: !input 'actions'
