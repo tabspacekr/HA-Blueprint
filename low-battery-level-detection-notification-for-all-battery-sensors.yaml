@@ -53,7 +53,7 @@ variables:
   threshold: !input 'threshold'
   exclude: !input 'exclude'
   sensors: >-
-    {% set result = namespace(sensors=[], sensors_values=[]) %}
+    {% set result = namespace(sensors=[]) %}
     {% for state in states.sensor | selectattr('attributes.device_class', '==', 'battery') %}
       {% if 0 <= state.state | int(-1) < threshold | int and not state.entity_id in exclude.entity_id %}
         {% set result.sensors = result.sensors + [state.name ~ ' (' ~ state.state ~ ' %)'] %}
